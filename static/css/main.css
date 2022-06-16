@@ -1,0 +1,94 @@
+.salah_card{
+    background: #F0E68C;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 10%;
+    text-align: center;
+    min-height: 275px;
+    min-width: 425px;
+}
+/* Buckets section */
+
+.buckets {
+	padding: 2em 1em 1em;
+	background: #3E454C;
+}
+
+.buckets ul {
+	margin: 0;
+	padding: 0;
+}
+
+.buckets li {
+	margin-bottom: 1em;
+	background: #F0E68C;
+	list-style-type: none;
+	border-radius: 10%;
+
+}
+
+.bucket {
+	padding: 1em;
+}
+
+/*--------------------------------------------------------------
+If no grid support, limit width to 50em and center align
+--------------------------------------------------------------*/
+@supports not (display: grid) {
+	.grid {
+		max-width: 50em;
+		margin: 0 auto;
+	}
+}
+
+/*--------------------------------------------------------------
+Use flex to create a three-bucket layout
+--------------------------------------------------------------*/
+
+@media screen and (min-width: 750px) {
+	@supports (display: grid) {
+
+		.buckets ul {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+
+		.buckets li {
+			width: 45%;
+		}
+
+	}
+}
+
+
+/*--------------------------------------------------------------
+CSS Grid layout for wider screens, when browser supports grid:
+--------------------------------------------------------------*/
+
+@media screen and (min-width: 400px) {
+	/* Layout with CSS Grid */
+	@supports (display: grid) {
+
+		/* Four-column layout. Two center columns have a total max width of 50em: */
+		.grid {
+
+			display: grid;
+			grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
+		}
+
+		/* Center items by placing them in the two center columns: */
+		.splash-content,
+		.more-content,
+		.buckets ul {
+			grid-column: 2/4;
+		}
+
+		/* Use automatic grid placement + span to let each item span two columns:*/
+		.twin,
+		.colophon aside {
+			grid-column: span 2;
+		}
+
+	}
+}
